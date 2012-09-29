@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tweetogram</title>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+
+            <div class="nav-collapse collapse span12 offset2">
+                <a class="brand" href="/">Tweetogram</a>
+                <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <ul class="nav pull-right">
+                    <li><a href="/signout">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="span8 offset2">
+            <form class="form-horizontal" action="generate" method="post">
+                <legend>Wallpaper</legend>
+                <div class="control-group">
+                    <label class="control-label" for="tag">Tag</label>
+                    <div class="controls">
+                        <input type="text" id="tag" placeholder="tag">
+
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">Generate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br><hr>
+    <footer class="pull-right">
+        Copyright &copy; Roman Bolgov, Ievgen Sobolev 2012 &nbsp;
+        <a href="#about">About</a>&nbsp; |&nbsp;<a href="#contact">Contact Us</a>
+    </footer>
+</div>
+
+</body>
+</html>
