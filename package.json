@@ -4,7 +4,8 @@
   "description": "hackathon project",
   "main": "app.js",
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,9 @@
     "lodash": "~0.7.0",
     "ejs": "~0.8.3",
     "jade": "~0.27.5"
+  },
+  "subdomain": "tweetogram",
+  "engines": {
+    "node": "0.8.x"
   }
 }
