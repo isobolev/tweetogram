@@ -12,6 +12,7 @@ everyauth.twitter
     .consumerSecret('sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI')
     .findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
         console.log(twitterUserMetadata);
+        console.log(session);
     })
     .redirectPath('/users');
 
@@ -37,7 +38,6 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/users', routes.users);
-app.get('/signout', routes.signout);
 app.post('/generate', routes.generate);
 
 http.createServer(app).listen(app.get('port'), function(){
