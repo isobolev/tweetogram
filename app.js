@@ -14,9 +14,9 @@ everyauth.twitter
 .callbackPath('/auth/twitter/callback')
 .findOrCreateUser(function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
   console.dir(arguments);
-  return twitterUserMetadata;
-})
-.redirectPath('/users');
+  var user = session.user = twitterUserMetadata;
+  return user;
+}).redirectPath('/users');
 
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
