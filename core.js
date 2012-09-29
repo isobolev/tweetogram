@@ -19,3 +19,12 @@ instaFlow.scan('./core/instagram', function (err, done) {
   });
 
 });
+module.exports.createWallpaper = function (uid, tag, callback) {
+  instaFlow.setRootArgs({'uid': uid, 'tag': tag, 'baseDir': __dirname + '/userImages/', 'gm': new GM()});
+  instaFlow.run(function (err, results) {
+    if (err) {
+      return callback(err);
+    }
+    callback(null, results['/montage']);
+  });
+};

@@ -9,7 +9,8 @@ var GetUrls = function () {
   this.onStart = this.entryPoint.bind(this);
 };
 GetUrls.prototype.entryPoint = function (callback, data) {
-  Instagram.media.popular({
+  Instagram.tags.search({
+    'q': data.main.tag,
     'complete': function (popular) {
       callback(null, popular.map(function (img) {
         return img.images.standard_resolution.url;

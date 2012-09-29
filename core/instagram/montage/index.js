@@ -8,10 +8,16 @@ var Montage = function () {
   this.resultFilename = '/wallpaper.jpg';
 };
 Montage.prototype.entryPoint = function (callback, data) {
-  data.main.gm.resultFile(data.main.baseDir + data.main.uid +  this.resultFilename);
+  var wallpaper = data.main.baseDir + data.main.uid + this.resultFilename;
+  data.main.gm.resultFile(wallpaper);
   data.images.forEach(function (img) {
     data.main.gm.bottom(img.file);
   });
-  data.main.gm.execute(callback);
+  data.main.gm.execute(function (err) {
+    if (err) {
+      return callback(err);
+    }
+    callback(null, wallpaper);
+  });
 };
 module.exports = Montage;

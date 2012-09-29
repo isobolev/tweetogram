@@ -1,5 +1,5 @@
 var everyauth = require('everyauth');
-
+var core = require('../core.js');
 exports.index = function(req, res){
     if(req.loggedIn){
         console.log(req.session.auth.twitter);
@@ -12,5 +12,9 @@ exports.users = function(req, res){
 };
 
 exports.generate = function(req, res){
-    res.render('user.ejs', { layout:false });
+  var tag = req.param('tag', 'nature');
+  core.createWallpaper('bcd', tag, function (err, path) {
+    console.dir(arguments);
+    res.render('user.ejs', {'wallpaper': path, layout:false });
+  });
 };
