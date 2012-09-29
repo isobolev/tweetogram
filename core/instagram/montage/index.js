@@ -5,10 +5,10 @@ var Montage = function () {
     'images': '/grabImages'
   };
   this.onStart = this.entryPoint.bind(this);
-  this.resultFilename = 'wallpaper.jpg';
+  this.resultFilename = '/wallpaper.jpg';
 };
 Montage.prototype.entryPoint = function (callback, data) {
-  data.main.gm.resultFile(data.main.baseDir + this.resultFilename);
+  data.main.gm.resultFile(data.main.baseDir + data.main.uid +  this.resultFilename);
   data.images.forEach(function (img) {
     data.main.gm.bottom(img.file);
   });
