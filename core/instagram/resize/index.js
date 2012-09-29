@@ -1,3 +1,4 @@
+var gm = require('gm');
 var Resize = function () {
   this.deps = {
     'main': '/',
@@ -6,6 +7,22 @@ var Resize = function () {
   this.onStart = this.entryPoint.bind(this);
 };
 Resize.prototype.entryPoint = function (callback, data) {
-  callback(null, false);
+  var urls = data.images;
+  var len = urls.length;
+  urls.forEach(function (img) {
+    var degrees = parseInt(Math.random() * 20, 10);
+    degrees = (degrees % 2 === 0) ? -degrees : degrees;
+    console.log('rotate image to ' + degrees);
+    gm(img.file)
+    .noProfile()
+    .resize("400", "400")
+    .rotate('#2076BD', degrees)
+    .background('#2076BD')
+    .write(img.file, function () {
+      if (!(--len)) {
+        callback(null, true);
+      }
+    });
+  });
 };
 module.exports = Resize;

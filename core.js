@@ -12,19 +12,13 @@ instaFlow.scan('./core/instagram', function (err, done) {
     process.exit(1);
   }
   instaFlow.testTree();
-  instaFlow.setRootArgs({'uid': 'abc', 'baseDir': __dirname + '/userImages/', 'gm': new GM()});
-  instaFlow.run(function (err, results) {
-    console.dir(arguments);
-    process.exit(1);
-  });
-
 });
 module.exports.createWallpaper = function (uid, tag, callback) {
-  instaFlow.setRootArgs({'uid': uid, 'tag': tag, 'baseDir': __dirname + '/userImages/', 'gm': new GM()});
+  instaFlow.setRootArgs({'uid': uid, 'tag': tag, 'baseDir': __dirname + '/public/images/userImages/', 'gm': new GM()});
   instaFlow.run(function (err, results) {
     if (err) {
       return callback(err);
     }
-    callback(null, results['/montage']);
+    callback(null, uid);
   });
 };
