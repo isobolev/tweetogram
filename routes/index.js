@@ -1,3 +1,3 @@
 exports.index = function(req, res){
-    res.render('index',{ err: false, user: req.session.user })
+    res.render('login.ejs', { layout:false });
 };
