@@ -9,3 +9,7 @@ exports.signout = function(req, res){
 exports.login = function(req, res){
     res.render('user.ejs', { layout:false });
 };
+
+exports.generate = function(req, res){
+    res.render('user.ejs', { layout:false });
+};

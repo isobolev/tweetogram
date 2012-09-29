@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse">
     <div class="navbar-inner">
         <div class="container">
             <a class="brand" href="/">Tweetogram</a>
@@ -27,8 +27,26 @@
 </div>
 
 <div class="container">
+    <div class="row">
+        <div class="span8 offset2">
+            <form class="form-horizontal" action="generate" method="post">
+                <legend>Wallpaper</legend>
+                <div class="control-group">
+                    <label class="control-label" for="tag">Tag</label>
+                    <div class="controls">
+                        <input type="text" id="tag" placeholder="tag">
 
+                    </div>
+                </div>
 
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">Generate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <br><hr>
     <footer class="pull-right">
         Copyright &copy; Roman Bolgov, Ievgen Sobolev 2012 &nbsp;
