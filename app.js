@@ -27,18 +27,9 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-/*
-everyauth.twitter
-    .consumerKey('YOUR CONSUMER ID HERE')
-    .consumerSecret('YOUR CONSUMER SECRET HERE')
-    .findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
-        // find or create user logic goes here
-    })
-    .redirectPath('/');
-    */
-
 app.get('/', routes.index);
 app.get('/login', routes.login);
+app.get('/users', routes.users);
 app.get('/signout', routes.signout);
 app.post('/generate', routes.generate);
 
