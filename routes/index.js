@@ -8,7 +8,7 @@ exports.index = function(req, res){
 };
 
 exports.users = function(req, res){
-    res.render('user.ejs', { layout:false  });
+    res.render('user.ejs', {'wallpaper': null});
 };
 
 exports.generate = function(req, res){
