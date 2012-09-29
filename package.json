@@ -1,10 +1,9 @@
 {
   "name": "tweetogram",
-  "version": "0.0.1-1",
+  "version": "0.0.1-3",
   "description": "hackathon project",
   "main": "app.js",
   "scripts": {
-    "test": "make test",
     "start": "node app.js"
   },
   "repository": {
@@ -20,7 +19,11 @@
     "broom": "~0.1.2",
     "lodash": "~0.7.0",
     "ejs": "~0.8.3",
-    "jade": "~0.27.5"
+    "jade": "~0.27.5",
+    "request": "~2.11.4",
+    "gm": "~1.5.0",
+    "async": "~0.1.22",
+    "mkdirp": "~0.3.4"
   },
   "subdomain": "tweetogram",
   "engines": {
