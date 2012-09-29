@@ -6,6 +6,11 @@ var fs = require('fs');
 var everyauth = require('everyauth');
 
 var app = express();
+everyauth.everymodule.findUserById(function (userId, callback) {
+  var user = {'uid': userId};
+  callback(null, user);
+});
+
 
 everyauth.twitter
 .myHostname('http://tweetogram.clitika.com')
