@@ -8,7 +8,7 @@ var everyauth = require('everyauth');
 var app = express();
 
 everyauth.twitter
-    .myHostname('http://tweetogram.clitika.com/')
+    .myHostname('http://tweetogram.clitika.com')
     .consumerKey('Ib3kKgoKa5uFilCE4jTmcg')
     .consumerSecret('sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI')
     .callbackPath('/auth/twitter/callback')
