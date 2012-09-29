@@ -8,10 +8,11 @@ var everyauth = require('everyauth');
 var app = express();
 
 everyauth.twitter
+    .myHostname('http://tweetogram.clitika.com/')
     .consumerKey('Ib3kKgoKa5uFilCE4jTmcg')
     .consumerSecret('sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI')
-    .callbackPath('http://tweetogram.clitika.com/auth/twitter/callback')
-    .findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
+    .callbackPath('/auth/twitter/callback')
+    .findOrCreateUser(function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
         console.dir(arguments);
     })
     .redirectPath('/users');
