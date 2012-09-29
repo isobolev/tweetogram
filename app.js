@@ -10,9 +10,9 @@ var app = express();
 everyauth.twitter
     .consumerKey('Ib3kKgoKa5uFilCE4jTmcg')
     .consumerSecret('sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI')
+    .callbackPath('/auth/twitter/callback')
     .findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
-        console.log(twitterUserMetadata);
-        console.log(session);
+        console.dir(arguments);
     })
     .redirectPath('/users');
 
