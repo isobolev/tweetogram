@@ -2,7 +2,7 @@
   "name": "tweetogram",
   "version": "0.0.1",
   "description": "hackathon project",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "make test"
   },
@@ -18,6 +18,7 @@
     "mongoose": "~3.1.2",
     "broom": "~0.1.2",
     "lodash": "~0.7.0",
-    "ejs": "~0.8.3"
+    "ejs": "~0.8.3",
+    "jade": "~0.27.5"
   }
 }
