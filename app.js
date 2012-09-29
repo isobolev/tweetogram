@@ -7,6 +7,14 @@ var everyauth = require('everyauth');
 
 var app = express();
 
+everyauth.twitter
+    .consumerKey('Ib3kKgoKa5uFilCE4jTmcg')
+    .consumerSecret('sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI')
+    .findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
+        console.log(twitterUserMetadata);
+    })
+    .redirectPath('/users');
+
 app.configure(function(){
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
@@ -16,7 +24,7 @@ app.configure(function(){
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    app.use(express.session({ secret: 'waqdsrfeAD' }));
+    app.use(express.session({ secret: 'waqasrfeAD' }));
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(everyauth.middleware());
@@ -28,18 +36,9 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/login', routes.login);
 app.get('/users', routes.users);
 app.get('/signout', routes.signout);
 app.post('/generate', routes.generate);
-
-everyauth.twitter
-    .consumerKey('Ib3kKgoKa5uFilCE4jTmcg')
-    .consumerSecret('sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI')
-    .findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
-        console.log(twitterUserMetadata);
-    })
-    .redirectPath('/users');
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
