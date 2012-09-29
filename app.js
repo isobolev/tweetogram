@@ -33,6 +33,14 @@ app.get('/users', routes.users);
 app.get('/signout', routes.signout);
 app.post('/generate', routes.generate);
 
+everyauth.twitter
+    .consumerKey('Ib3kKgoKa5uFilCE4jTmcg')
+    .consumerSecret('sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI')
+    .findOrCreateUser( function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
+        console.log(twitterUserMetadata);
+    })
+    .redirectPath('/users');
+
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });
