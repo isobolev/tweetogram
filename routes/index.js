@@ -11,7 +11,7 @@ exports.users = function (req, res) {
   if (!req.session || !req.session.auth || !req.session.auth.twitter) {
     return res.redirect('http://tweetogram.clitika.com/');
   }
-  res.render('user.ejs', {'wallpaper': null, 'session': req.session});
+  res.render('user.ejs', {'wallpaper': (req.session.customWP || null), 'session': req.session});
 };
 
 exports.generate = function (req, res) {
@@ -35,7 +35,8 @@ exports.generate = function (req, res) {
       form.append('tile', 'true');
       form.append('image', fs.createReadStream('./public/images/userImages/' + uid + '/wallpaper.jpg'));
     }
-    return res.render('user.ejs', {'wallpaper': uid, 'session': req.session});
+    req.session.customWP = uid;
+    return res.redirect('http://tweetogram.clitika.com/generate');
   });
 };
 exports.generateSelf = function (req, res) {
@@ -57,7 +58,8 @@ exports.generateSelf = function (req, res) {
     form.append('skip_status', 'true');
     form.append('tile', 'true');
     form.append('image', fs.createReadStream('./public/images/userImages/' + uid + '/wallpaper.jpg'));
-    return res.render('user.ejs', {'wallpaper': uid, 'session': req.session});
+    req.session.customWP = uid;
+    return res.redirect('http://tweetogram.clitika.com/generate');
   });
 
 };
