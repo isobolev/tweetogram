@@ -14,11 +14,10 @@ exports.users = function (req, res) {
 };
 
 exports.generate = function (req, res) {
-  if (!req.session.auth.loggedIn) {
+  if (!req.session.auth.twitter) {
     return res.redirect('/');
   }
   var tag = req.param('tag', 'nature');
-  console.dir(req.param('set_as_wallpaper', ''));
   var uid = req.session.auth.twitter.user.screen_name;
   core.createWallpaper(uid, tag, function (err, path) {
     if (req.param('set_as_wallpaper', false) === 'on') {
