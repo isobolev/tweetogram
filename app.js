@@ -38,7 +38,7 @@ everyauth.instagram
   console.log('AAAAAAGRAM');
   return true;
 })
-.redirectPath('/generate?self=true');
+.redirectPath('/generate/true');
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -61,7 +61,7 @@ app.configure('development', function () {
 
 app.get('/', routes.index);
 app.get('/generate', routes.users);
-app.get('/generate?self=true', routes.generateSelf);
+app.get('/generate/:self', routes.generateSelf);
 app.post('/generate', routes.generate);
 
 http.createServer(app).listen(app.get('port'), function () {
