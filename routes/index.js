@@ -6,11 +6,11 @@ exports.index = function (req, res) {
   if (req.loggedIn) {
     console.log(req.session.auth.twitter);
   }
-  res.render('index.ejs');
+  res.render('index.ejs', {'session': req.session});
 };
 
 exports.users = function (req, res) {
-  res.render('user.ejs', {'wallpaper': null});
+  res.render('user.ejs', {'wallpaper': null, 'session': req.session});
 };
 
 exports.generate = function (req, res) {
@@ -34,7 +34,7 @@ exports.generate = function (req, res) {
       form.append('tile', 'true');
       form.append('image', fs.createReadStream('./public/images/userImages/' + req.sessionID + '/wallpaper.jpg'));
     }
-    return res.render('user.ejs', {'wallpaper': path});
+    return res.render('user.ejs', {'wallpaper': path, 'session': req.session});
   });
 };
 
