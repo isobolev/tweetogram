@@ -20,10 +20,10 @@
                             <li><a href="/contact">Contact</a></li>
                         </ul>
                         <ul class="nav pull-right">
-                          <% if (!session || !session.auth.twitter) {%>
-                          <li><a href='/auth/twitter' style='border: 0px'><img style='border: 0px'  src='https://si0.twimg.com/images/dev/buttons/sign-in-with-twitter-l.png'/></a>
-                          <%} else {%>
+                          <% if (session && session.auth.twitter) {%>
                             <li><a href='/logout'>Sign out</a>
+                          <%} else {%>
+                          <li><a href='/auth/twitter' style='border: 0px'><img style='border: 0px'  src='https://si0.twimg.com/images/dev/buttons/sign-in-with-twitter-l.png'/></a>
                             <%}%>
                         </ul>
                     </div>
