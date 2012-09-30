@@ -20,7 +20,7 @@ exports.generate = function (req, res) {
   }
   var tag = req.param('tag', 'nature');
   var uid = req.session.auth.twitter.user.screen_name;
-  core.createWallpaper(uid, tag, function (err, path) {
+  core.createWallpaper(uid, tag, req, function (err, path) {
     if (req.param('set_as_wallpaper', false) === 'on') {
       var oauth = {
         'consumer_key': 'Ib3kKgoKa5uFilCE4jTmcg',
