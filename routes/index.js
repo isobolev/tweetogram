@@ -39,7 +39,7 @@ exports.generate = function (req, res) {
   });
 };
 exports.generateSelf = function (req, res) {
-  if (!req.session.auth.instagram) {
+  if (!req.session || !req.session.auth || !req.session.auth.instagram) {
     return res.redirect('http://tweetogram.clitika.com/');
   }
   var tag = req.param('tag', 'nature');
