@@ -12,7 +12,6 @@ Resize.prototype.entryPoint = function (callback, data) {
   urls.forEach(function (img) {
     var degrees = parseInt(Math.random() * 20, 10);
     degrees = (degrees % 2 === 0) ? -degrees : degrees;
-    console.log('rotate image to ' + degrees);
     gm(img.file)
     .noProfile()
     .resize("400", "400")

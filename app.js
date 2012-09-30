@@ -33,7 +33,7 @@ app.configure(function () {
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'waqasrfeAD' }));
-  app.use(express.methodOverride());
+  //app.use(express.methodOverride());
   app.use(app.router);
   app.use(everyauth.middleware());
   app.use(express.static(path.join(__dirname, 'public')));

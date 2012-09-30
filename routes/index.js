@@ -14,7 +14,6 @@ exports.users = function(req, res){
 exports.generate = function(req, res){
   var tag = req.param('tag', 'nature');
   core.createWallpaper('bcd', tag, function (err, path) {
-    console.dir(arguments);
     res.render('user.ejs', {'wallpaper': path, layout:false });
   });
 };
