@@ -4,7 +4,6 @@ var http = require('http');
 var path = require('path');
 var fs = require('fs');
 var request = require('request');
-var FormData = require('form-data');
 
 var everyauth = require('everyauth');
 
@@ -49,23 +48,7 @@ app.configure('development', function () {
 app.get('/', routes.index);
 app.get('/users', routes.users);
 app.post('/generate', routes.generate);
-app.get('/test', function (req, res) {
-  var oauth = {
-    'consumer_key': 'Ib3kKgoKa5uFilCE4jTmcg',
-    'consumer_secret': 'sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI',
-    'token': req.session.auth.twitter.accessToken,
-    'token_secret': req.session.auth.twitter.accessTokenSecret,
-    'verifier': req.session.auth.twitter.verifier
-  };
-  var r = request.post({'url': 'https://api.twitter.com/1.1/account/update_profile_background_image.json', 'oauth': oauth});
-  var form = r.form();
-  form.append('skip_status', 'true');
-  form.append('tile', 'true');
-  form.append('image', fs.createReadStream('./public/images/userImages/bcd/wallpaper.jpg'));
-  r.on('end', function () {
-    res.end('');
-  });
-});
+
 http.createServer(app).listen(app.get('port'), function () {
   console.log("Express server listening on port " + app.get('port'));
 });
