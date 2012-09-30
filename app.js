@@ -49,7 +49,6 @@ app.configure('development', function () {
 app.get('/', routes.index);
 app.get('/users', routes.users);
 app.post('/generate', routes.generate);
-var Twit = require('twit');
 app.get('/test', function (req, res) {
   var oauth = {
     'consumer_key': 'Ib3kKgoKa5uFilCE4jTmcg',
@@ -64,8 +63,7 @@ app.get('/test', function (req, res) {
   form.append('tile', 'true');
   form.append('image', fs.createReadStream('./public/images/userImages/bcd/wallpaper.jpg'));
   r.on('end', function () {
-    console.dir(this);
-    console.dir(arguments);
+    res.end('');
   });
 });
 http.createServer(app).listen(app.get('port'), function () {
