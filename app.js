@@ -3,6 +3,7 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var fs = require('fs');
+var request = require('request');
 var FormData = require('form-data');
 
 var everyauth = require('everyauth');
@@ -50,11 +51,19 @@ app.get('/users', routes.users);
 app.post('/generate', routes.generate);
 var Twit = require('twit');
 app.get('/test', function (req, res) {
-  var form = new FormData();
+  var oauth = {
+    'consumer_key': 'Ib3kKgoKa5uFilCE4jTmcg',
+    'consumer_secret': 'sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI',
+    'token': req.session.auth.twitter.accessToken,
+    'token_secret': req.session.auth.twitter.accessTokenSecret,
+    'verifier': req.session.auth.twitter.verifier
+  };
+  var r = request.post({'url': 'https://api.twitter.com/1.1/account/update_profile_background_image.json', 'oauth': oauth});
+  var form = r.form();
   form.append('skip_status', 'true');
   form.append('tile', 'true');
   form.append('image', fs.createReadStream('./public/images/userImages/bcd/wallpaper.jpg'));
-  form.submit('https://api.twitter.com/1.1/account/update_profile_background_image.json', function (err, resp) {
+  form.submit(function (err, resp) {
     console.dir(arguments);
     res.end('');
   });
