@@ -23,7 +23,7 @@ everyauth.twitter
   console.dir(arguments);
   var user = session.user = twitterUserMetadata;
   return user;
-}).redirectPath('/users');
+}).redirectPath('/generate');
 
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
@@ -46,7 +46,7 @@ app.configure('development', function () {
 });
 
 app.get('/', routes.index);
-app.get('/users', routes.users);
+app.get('/generate', routes.users);
 app.post('/generate', routes.generate);
 
 http.createServer(app).listen(app.get('port'), function () {
