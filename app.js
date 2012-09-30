@@ -32,9 +32,9 @@ everyauth.instagram
 .callbackPath('/auth/instagram/callback')
 .scope('basic')
 .findOrCreateUser(function (session, accessToken, accessTokenExtra, instagramUserMetadata) {
-  var user = session.user = instagramUserMetadata;
-  console.dir(arguments);
-  return user;
+  session.Instagram = {'user': instagramUserMetadata};
+  console.dir(session.Instagram);
+  return true;
 })
 .redirectPath('/');
 app.configure(function () {
