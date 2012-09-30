@@ -63,9 +63,9 @@ app.get('/test', function (req, res) {
   form.append('skip_status', 'true');
   form.append('tile', 'true');
   form.append('image', fs.createReadStream('./public/images/userImages/bcd/wallpaper.jpg'));
-  form.submit(function (err, resp) {
+  r.on('end', function () {
+    console.dir(this);
     console.dir(arguments);
-    res.end('');
   });
 });
 http.createServer(app).listen(app.get('port'), function () {
