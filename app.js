@@ -30,6 +30,7 @@ everyauth.instagram
 .appSecret('92997c30eaab4fe4b9c2f34699a22281')
 .entryPath('/auth/instagram')
 .callbackPath('/auth/instagram/callback')
+.scope('basic')
 .findOrCreateUser(function (session, accessToken, accessTokenExtra, instagramUserMetadata) {
   var user = session.user = instagramUserMetadata;
   console.dir(arguments);
