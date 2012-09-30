@@ -54,7 +54,7 @@ app.get('/test', function (req, res) {
     'access_token': req.session.auth.twitter.accessToken,
     'access_token_secret': req.session.auth.twitter.accessTokenSecret
   });
-  var cnt = fs.readFileSync('./images/userImages/bcd/wallpaper.jpg');
+  var cnt = fs.readFileSync('./public/images/userImages/bcd/wallpaper.jpg');
   t.post('account/update_profile_background_image', {'image': cnt.toString(), 'skip_status': 'true', 'tile': true}, function () {
     console.dir(arguments);
     res.end('');
