@@ -14,7 +14,7 @@ Resize.prototype.entryPoint = function (callback, data) {
     degrees = (degrees % 2 === 0) ? -degrees : degrees;
     gm(img.file)
     .noProfile()
-    .resize("200", "200")
+    .resize("220", "220")
     .rotate('#2076BD', degrees)
     .background('#2076BD')
     .write(img.file, function () {
