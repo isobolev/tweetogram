@@ -20,11 +20,22 @@ everyauth.twitter
 .consumerSecret('sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI')
 .callbackPath('/auth/twitter/callback')
 .findOrCreateUser(function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
-  console.dir(arguments);
   var user = session.user = twitterUserMetadata;
   return user;
 }).redirectPath('/generate');
 
+everyauth.instagram
+.myHostname('http://tweetogram.clitika.com')
+.appId('a1cb867be3ca4f21b5dcea5c94d3333e')
+.appSecret('92997c30eaab4fe4b9c2f34699a22281')
+.entryPath('/auth/instagram')
+.callbackPath('/auth/instagram/callback')
+.findOrCreateUser(function (session, accessToken, accessTokenExtra, instagramUserMetadata) {
+  var user = session.user = instagramUserMetadata;
+  console.dir(arguments);
+  return user;
+})
+.redirectPath('/');
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
