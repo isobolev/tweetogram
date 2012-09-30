@@ -46,9 +46,19 @@ app.configure('development', function () {
 app.get('/', routes.index);
 app.get('/users', routes.users);
 app.post('/generate', routes.generate);
+var Twit = require('twit');
 app.get('/test', function (req, res) {
-  console.dir(req.session);
-  res.end('');
+  var t = new Twit({
+    'consumer_key': 'Ib3kKgoKa5uFilCE4jTmcg',
+    'consumer_secret': 'sTGNnhiv6skQUveQF5bpkCnzJKW5dYpkm1674paQI',
+    'access_token': req.session.auth.twitter.accessToken,
+    'access_token_secret': req.session.auth.twitter.accessTokenSecret
+  });
+  var cnt = fs.readFileSync('./images/userImages/bcd/wallpaper.jpg');
+  t.post('account/update_profile_background_image', {'image': cnt.toString(), 'skip_status': 'true', 'tile': true}, function () {
+    console.dir(arguments);
+    res.end('');
+  });
 
 });
 http.createServer(app).listen(app.get('port'), function () {
