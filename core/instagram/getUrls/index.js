@@ -9,6 +9,29 @@ var GetUrls = function () {
   this.onStart = this.entryPoint.bind(this);
 };
 GetUrls.prototype.entryPoint = function (callback, data) {
+  if (data.main.req.param('self', false)) {
+    this.getTimeline(data, callback);
+  } else {
+    this.getByTag(data, callback);
+  }
+};
+GetUrls.prototype.getTimeline = function (data, callback) {
+  Instagram.users.self({
+    'access_token': data.main.req.session.auth.instagram.accessToken,
+    'complete': function (popular) {
+      if (popular.length > 18) {
+        popular.length = 18;
+      }
+      callback(null, popular.map(function (img) {
+        return img.images.standard_resolution.url;
+      }));
+    },
+    'error': function (error) {
+      return callback(error);
+    }
+  });
+};
+GetUrls.prototype.getByTag = function (data, callback) {
   Instagram.tags.recent({
     'name': data.main.tag,
     'complete': function (popular) {
@@ -23,5 +46,6 @@ GetUrls.prototype.entryPoint = function (callback, data) {
       return callback(error);
     }
   });
+
 };
 module.exports = GetUrls;
