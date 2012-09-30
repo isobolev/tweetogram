@@ -14,6 +14,8 @@ exports.users = function (req, res) {
 };
 
 exports.generate = function (req, res) {
+  console.dir(req);
+  return res.end('');
   if (!req.loggedIn) {
     return res.redirect('/');
   }
@@ -34,7 +36,7 @@ exports.generate = function (req, res) {
       form.append('tile', 'true');
       form.append('image', fs.createReadStream('./public/images/userImages/' + req.sessionID + '/wallpaper.jpg'));
     }
-    return res.render('user.ejs', {'wallpaper': path, layout: false });
+    return res.render('user.ejs', {'wallpaper': path});
   });
 };
 
