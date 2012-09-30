@@ -39,6 +39,10 @@ app.configure(function () {
   app.use(app.router);
   app.use(everyauth.middleware());
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+  });
 });
 
 app.configure('development', function () {
