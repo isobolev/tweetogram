@@ -11,14 +11,14 @@ exports.index = function (req, res) {
 
 exports.users = function (req, res) {
   if (!req.session || !req.session.auth || !req.session.auth.twitter) {
-    return res.redirect('/');
+    return res.redirect('http://tweetogram.clitika.com/');
   }
   res.render('user.ejs', {'wallpaper': null, 'session': req.session});
 };
 
 exports.generate = function (req, res) {
   if (!req.session.auth.twitter) {
-    return res.redirect('/');
+    return res.redirect('http://tweetogram.clitika.com/');
   }
   var tag = req.param('tag', 'nature');
   var uid = req.session.auth.twitter.user.screen_name;
