@@ -16,6 +16,9 @@
                         <a class="brand" href="/">Tweetogram</a>
                         <ul class="nav">
                             <li class="active"><a href="/">Home</a></li>
+                            <% if (session && session.auth && session.auth.twitter) {%>
+                            <li><a href="/generate">Create</a></li>
+                            <%}%>
                         </ul>
                         <ul class="nav pull-right">
                           <% if (session && session.auth && session.auth.twitter) {%>
