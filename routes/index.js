@@ -3,9 +3,7 @@ var everyauth = require('everyauth');
 var request = require('request');
 var core = require('../core.js');
 exports.index = function (req, res) {
-  if (req.loggedIn) {
-    console.log(req.session.auth.twitter);
-  }
+  console.dir(req.session.auth.twitter);
   res.render('index.ejs', {'session': req.session});
 };
 
