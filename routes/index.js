@@ -10,6 +10,9 @@ exports.index = function (req, res) {
 };
 
 exports.users = function (req, res) {
+  if (!req.session || !req.session.auth || !req.session.auth.twitter) {
+    return res.redirect('/');
+  }
   res.render('user.ejs', {'wallpaper': null, 'session': req.session});
 };
 
