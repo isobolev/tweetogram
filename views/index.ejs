@@ -21,7 +21,8 @@
                         </ul>
                         <ul class="nav pull-right">
                           <% if (session && session.auth && session.auth.twitter) {%>
-                          <li> Welcome, <%=session.auth.twitter.user.screen_name%> <img src="<%=session.auth.twitter.user.profile_image_url%>"/> <a href='/logout'>Sign out</a>
+                          <li> Welcome, <%=session.auth.twitter.user.screen_name%> <img src="<%=session.auth.twitter.user.profile_image_url%>" style="width: 50px; height: 50px"/>
+                          <a href='/logout'>Sign out</a></li>
                           <%} else {%>
                           <li><a href='/auth/twitter' style='border: 0px'><img style='border: 0px'  src='https://si0.twimg.com/images/dev/buttons/sign-in-with-twitter-l.png'/></a>
                             <%}%>
