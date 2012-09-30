@@ -12,7 +12,9 @@ GetUrls.prototype.entryPoint = function (callback, data) {
   Instagram.tags.recent({
     'name': data.main.tag,
     'complete': function (popular) {
-      console.dir(popular);
+      if (popular.length > 18) {
+        popular.length = 18;
+      }
       callback(null, popular.map(function (img) {
         return img.images.standard_resolution.url;
       }));
