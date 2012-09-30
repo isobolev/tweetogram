@@ -38,5 +38,3 @@ exports.generate = function (req, res) {
   });
 };
 
-var content = (new Buffer(fs.readFileSync('wp.jpg'))).toString('base64');
-
