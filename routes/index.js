@@ -19,7 +19,8 @@ exports.generate = function (req, res) {
   }
   var tag = req.param('tag', 'nature');
   console.dir(req.param('set_as_wallpaper', ''));
-  core.createWallpaper(req.session.auth.twitter.user.screen_name, tag, function (err, path) {
+  var uid = req.session.auth.twitter.user.screen_name;
+  core.createWallpaper(uid, tag, function (err, path) {
     if (req.param('set_as_wallpaper', false) === 'on') {
       var oauth = {
         'consumer_key': 'Ib3kKgoKa5uFilCE4jTmcg',
@@ -32,9 +33,9 @@ exports.generate = function (req, res) {
       var form = r.form();
       form.append('skip_status', 'true');
       form.append('tile', 'true');
-      form.append('image', fs.createReadStream('./public/images/userImages/' + req.sessionID + '/wallpaper.jpg'));
+      form.append('image', fs.createReadStream('./public/images/userImages/' + uid + '/wallpaper.jpg'));
     }
-    return res.render('user.ejs', {'wallpaper': path, 'session': req.session});
+    return res.render('user.ejs', {'wallpaper': uid, 'session': req.session});
   });
 };
 
