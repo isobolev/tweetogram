@@ -14,9 +14,7 @@ exports.users = function (req, res) {
 };
 
 exports.generate = function (req, res) {
-  console.dir(req);
-  return res.end('');
-  if (!req.loggedIn) {
+  if (!req.session.auth.loggedIn) {
     return res.redirect('/');
   }
   var tag = req.param('tag', 'nature');
