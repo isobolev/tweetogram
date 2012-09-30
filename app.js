@@ -33,9 +33,6 @@ everyauth.instagram
 .scope('basic')
 .findOrCreateUser(function (session, accessToken, accessTokenExtra, instagramUserMetadata) {
   session.Instagram = {'user': instagramUserMetadata};
-  console.log('INSTAAAAA');
-  console.dir(session.Instagram);
-  console.log('AAAAAAGRAM');
   return true;
 })
 .redirectPath('/generate/true');

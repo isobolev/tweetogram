@@ -16,11 +16,10 @@ GetUrls.prototype.entryPoint = function (callback, data) {
   }
 };
 GetUrls.prototype.getTimeline = function (data, callback) {
-  console.log('get by timeline');
-  Instagram.users.self({
+  Instagram.users.recent({
+    'user_id': data.main.req.session.auth.instagram.user.id,
     'access_token': data.main.req.session.auth.instagram.accessToken,
     'complete': function (popular) {
-      console.dir(popular);
       if (popular.length > 18) {
         popular.length = 18;
       }
